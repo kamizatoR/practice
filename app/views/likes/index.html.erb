@@ -1,0 +1,17 @@
+<table>
+  <% @likes.each do |like| %>
+
+      <td>
+        ID <%= like.id %>
+      </td>
+
+      <td>
+        投稿ID <%= like.post.body %>
+      </td>
+
+      <td>
+        ユーザーID <%= like.user.name %>
+      </td>
+
+  <% end %>
+</table>

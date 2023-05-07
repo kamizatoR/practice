@@ -3,6 +3,24 @@
 <p>Name <%= @user.name %></p>
 <p>Email  <%= @user.email %></p>
 
+<table>
+  <% @user.posts.each do |post| %>
+
+      <td>
+        <%= link_to post_path(post.id) do %>
+          ID <%= post.id %>
+        <% end %>
+      </td>
+
+      <td>
+        本文 <%= post.body %>
+      </td>
+
+  <% end %>
+</table>
+
 <%= link_to "投稿", new_post_path %>
 <%= link_to "ホーム", root_path %>
 <%= link_to "ユーザー一覧", users_path %>
+<%= link_to "投稿一覧", posts_path %>
+<%= link_to "いいね一覧", post_likes_path(@post.id) %>

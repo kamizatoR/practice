@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   root to: 'users#top'
 
   resources :users, only:[:create, :show, :index]
-  resources :posts, only:[:create, :show, :new]
+  resources :posts, only:[:create, :show, :new, :index] do
+    resources :likes, only: [:create, :index]
+  end
 end

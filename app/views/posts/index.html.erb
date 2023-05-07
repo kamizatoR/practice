@@ -1,0 +1,19 @@
+<table>
+  <% @posts.each do |post| %>
+
+      <td>
+        <%= link_to post_path(post.id) do %>
+          ID <%= post.id %>
+        <% end %>
+      </td>
+
+      <td>
+        本文 <%= post.body %>
+      </td>
+
+      <td>
+        ユーザー名 <%= post.user.name %>
+      </td>
+
+  <% end %>
+</table>

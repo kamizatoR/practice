@@ -1,7 +1,17 @@
 <p>投稿ID <%= @post.id %></p>
 <p>ユーザーID <%= @post.user_id %></p>
 <p>本文 <%= @post.body %></p>
+<p>いいね数　<%= @post.likes.count %></p>
+
+<%= form_with model: [@post, @like], url: post_likes_path(@post), method: :post do |f| %>
+  <%= f.text_field :user_id %>
+  <%= f.text_field :post_id %>
+
+  <%= f.submit %>
+<% end %>
 
 <%= link_to "投稿", new_post_path %>
 <%= link_to "ホーム", root_path %>
 <%= link_to "ユーザー一覧", users_path %>
+<%= link_to "投稿一覧", posts_path %>
+<%= link_to "いいね一覧", post_likes_path(@post.id) %>
