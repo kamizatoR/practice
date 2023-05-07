@@ -1,0 +1,7 @@
+<p>投稿ID <%= @post.id %></p>
+<p>ユーザーID <%= @post.user_id %></p>
+<p>本文 <%= @post.body %></p>
+
+<%= link_to "投稿", new_post_path %>
+<%= link_to "ホーム", root_path %>
+<%= link_to "ユーザー一覧", users_path %>

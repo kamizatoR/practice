@@ -1,0 +1,13 @@
+<%= form_with model: @users, url: users_path, method: :post do |f| %>
+
+  <%= f.text_field :name %>
+  <%= f.text_field :email %>
+
+  <%= f.submit %>
+
+<% end %>
+
+
+<%= link_to "投稿", new_post_path %>
+<%= link_to "ホーム", root_path %>
+<%= link_to "ユーザー一覧", users_path %>

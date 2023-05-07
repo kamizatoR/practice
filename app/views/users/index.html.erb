@@ -1,0 +1,15 @@
+<table>
+  <% @users.each do |user| %>
+
+      <td>
+        <%= link_to user_path(user.id) do %>
+          ID <%= user.id %>
+        <% end %>
+      </td>
+
+      <td>
+        Name <%= user.name %>
+      </td>
+
+  <% end %>
+</table>
