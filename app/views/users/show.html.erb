@@ -2,6 +2,17 @@
 <p>ID  <%= @user.id %></p>
 <p>Name <%= @user.name %></p>
 <p>Email  <%= @user.email %></p>
+<p>フォロー数 <%= @user.followings.count %></p>
+<p>フォロワー数 <%= @user.followers.count %></p>
+<p>
+  <% @user.followings.each do |follow| %>
+
+       <%= follow.name %>
+
+  <% end %>
+</p>
+
+
 
 <table>
   <% @user.posts.each do |post| %>
@@ -19,12 +30,22 @@
   <% end %>
 </table>
 
-<%= link_to 
+<%= form_with model: @follow, url: follows_path, method: :post do |f| %>
+  <%= f.text_field :follower_id %>
+  <%= f.text_field :followed_id %>
 
-
+  <%= f.submit %>
+<% end %>
 
 <%= link_to "投稿", new_post_path %>
 <%= link_to "ホーム", root_path %>
 <%= link_to "ユーザー一覧", users_path %>
-<%= link_to "投稿一覧", posts_path %>
-<%= link_to "いいね一覧", post_likes_path(@post.id) %>
+<%= link_to "投稿一覧", posts_path %><br>
+
+<% @user.passive_notification.each do |active| %>
+  <%= active.action %>
+  <%= Post.find_by(id: active.post_id).body %>
+
+<% end %>
+
+<%= @user.passive_notification.count %>

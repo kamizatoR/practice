@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :posts, only:[:create, :show, :new, :index] do
     resources :likes, only: [:create, :index]
   end
+  resources :follows, only:[:create, :show, :index]
 end

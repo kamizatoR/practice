@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-  
+
   def top
     @users = User.new
   end
-  
+
   def index
     @users = User.all
   end
-  
+
   def create
     @user = User.new(user_params)
     @user.save
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @follow = Follow.new
   end
 
   private

@@ -1,8 +1,17 @@
 class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
+
+
+    @notification = Notification.new(
+      post_id: @like.post_id,
+      visited_id: @like.user_id,
+      action: 'like'
+    )
     @like.save
-    redirect_to root_path
+    @notification.save
+
+    redirect_to post_path(params[:post_id])
   end
 
   def index
